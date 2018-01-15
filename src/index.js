@@ -1,10 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import asyncComponent from "./lib/AsyncComponent";
 import registerServiceWorker from './lib/registerServiceWorker';
 
-ReactDOM.render(
-  <h1>Hello</h1>,
-  document.getElementById('root')
-);
+import './styles/index.css';
+
+const Home = asyncComponent(() => import("./components/views/Home"));
+
+render((
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Home} />
+    </Switch>
+  </BrowserRouter>
+), document.getElementById('root'));
 
 registerServiceWorker();
