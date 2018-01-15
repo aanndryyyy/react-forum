@@ -9,7 +9,7 @@ import './styles/index.css';
 const Home = asyncComponent(() => import("./components/views/Home"));
 
 render((
-  <BrowserRouter>
+  <BrowserRouter basename={'/proc/react-forum/'}>
     <Switch>
       <Route exact path="/" component={Home} />
     </Switch>
